@@ -21,9 +21,11 @@ namespace Infrastructure.Repositories
             _db = db;
             _mapper = mapper;
         }
+        
         public void Create(User user)
         {
             UserEntity userEntity = _mapper.Map<UserEntity>(user);
+           
             _db.Users.Add(userEntity);
             _db.SaveChanges();
         }

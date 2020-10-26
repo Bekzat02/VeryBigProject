@@ -12,7 +12,7 @@ namespace Domain.Services.Implementation
     {
         private readonly IUserRepository _userRepository;
         private readonly IPasswordHasher _passwordHasher;
-        
+
         public AuthService(
             IUserRepository userRepository,
             IPasswordHasher passwordHasher)
@@ -20,13 +20,15 @@ namespace Domain.Services.Implementation
             _userRepository = userRepository;
             _passwordHasher = passwordHasher;
         }
-        public User Register(RegisterUserDTO dto)
+        public User Register(RegisterUserDTO dto, string password)
         {
+            _passwordHasher.CreatePasswordHash(password, out byte[] passwordHash, out byte[] passwordSalt);
             User user = new User
             {
                 RegisteredDate = DateTime.UtcNow,
                 Role = Role.Customer,
-                PasswordHash = _passwordHasher.Hash(dto.Password),
+                PasswordHash = passwordHash,
+                PasswordSalt = passwordSalt,
                 Login = dto.Login,
             };
             _userRepository.Create(user);
@@ -35,7 +37,7 @@ namespace Domain.Services.Implementation
 
         public User SignIn()
         {
-            
+
         }
     }
 }
