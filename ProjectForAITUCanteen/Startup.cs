@@ -2,14 +2,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using Infrastructure.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using ProjectForAITUCanteen.Domain.Helpers;
+using ProjectForAITUCanteen.Domain.Repositories;
+using ProjectForAITUCanteen.Infrastructure.Repositories;
 
 namespace ProjectForAITUCanteen
 {
@@ -26,6 +32,15 @@ namespace ProjectForAITUCanteen
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddDbContext<CanteenContext>(options => options.UseNpgsql(Configuration.GetConnectionString("DeffaultConnection")));
+            services.AddCors();
+            /*services.AddControllers().AddNewtonsoftJson(opt =>
+            {
+                opt.SerializerSettings.ReferenceLoopHandling =
+                Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            });*/
+            services.AddAutoMapper(x => x.AddProfile(new AutoMapperProfiles()));
+            services.AddScoped<IProductRepository, ProductRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

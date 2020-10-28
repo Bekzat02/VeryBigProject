@@ -4,17 +4,18 @@ using Domain.Repositories;
 using Domain.Security;
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 
 namespace Domain.Services.Implementation
 {
-    public class AuthService : IAuthService
+   /* public class AuthService : IAuthService
     {
-        private readonly IUserRepository _userRepository;
+        *//*private readonly IEntityRepository _userRepository;
         private readonly IPasswordHasher _passwordHasher;
 
         public AuthService(
-            IUserRepository userRepository,
+            IEntityRepository userRepository,
             IPasswordHasher passwordHasher)
         {
             _userRepository = userRepository;
@@ -26,7 +27,6 @@ namespace Domain.Services.Implementation
             User user = new User
             {
                 RegisteredDate = DateTime.UtcNow,
-                Role = Role.Customer,
                 PasswordHash = passwordHash,
                 PasswordSalt = passwordSalt,
                 Login = dto.Login,
@@ -35,9 +35,12 @@ namespace Domain.Services.Implementation
             return user;
         }
 
+
+
         public User SignIn()
         {
-
-        }
-    }
+            var user = new User();
+            return user;
+        }*//*
+    }*/
 }

@@ -12,8 +12,8 @@ namespace Domain.Models
         public byte[] PasswordSalt { get; set; }
        /* public string PasswordHash { get; set; }*/
         public DateTime RegisteredDate { get; set; }
-        public Role Role { get; set; }
-        public long RoleId { get; set; }
+        
+        public string Role { get; set; }
 
 
     }

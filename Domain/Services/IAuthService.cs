@@ -8,7 +8,7 @@ namespace Domain.Services
 {
     public interface IAuthService
     {
-        User Register(RegisterUserDTO dto);
+        User Register(RegisterUserDTO dto, string password);
         User SignIn();
     }
 }

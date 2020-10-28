@@ -1,5 +1,6 @@
 ﻿using Infrastructure.Data.Entities;
 using Microsoft.EntityFrameworkCore;
+using ProjectForAITUCanteen.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,10 +9,10 @@ namespace Infrastructure.Data
 {
     public class CanteenContext : DbContext
     {
-        public CanteenContext(DbContextOptions options): base(options)
+        public CanteenContext(DbContextOptions<CanteenContext> options): base(options)
         {
 
         }
-        public DbSet<UserEntity> Users { get; private set; }
+        public DbSet<Product> Products { get; set; }
     }
 }

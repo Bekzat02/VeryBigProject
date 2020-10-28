@@ -13,6 +13,6 @@ namespace Infrastructure.Data.Entities
         public byte[] PasswordSalt { get; set; }
     /*    public string PasswordHash { get; set; }*/
         public DateTime RegisteredDate { get; set; }
-        public Role Role { get; set; }
+        /*public Role Role { get; set; }*/
     }
 }
