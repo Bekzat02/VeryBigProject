@@ -13,5 +13,6 @@ namespace ProjectForAITUCanteen.DataTransfer.DTO
         public double Price { get; set; }
         public bool IsBad { get; set; }
         //i am mal
+        //I am not mal
     }
 }
