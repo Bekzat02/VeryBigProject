@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Domain.Models
 {
-    public enum Role
+    public class Role
     {
-       Admin,
-       Customer
+        public long Id { get; set; }
+       public string Name { get; set; }
     }
 }
